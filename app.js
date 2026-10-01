@@ -194,6 +194,24 @@
     navigator.serviceWorker.register("sw.js").catch(function () {});
   }
 
+  // ホーム画面への追加（PWAインストール）の計測。GoatCounter導入後に有効化される（未導入時は何もしない）。
+  function trackInstallEvent(name) {
+    try {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: name, event: true });
+      }
+    } catch (e) { /* 解析スクリプト未導入でも動作に影響させない */ }
+  }
+  window.addEventListener("appinstalled", function () { trackInstallEvent("pwa-installed"); });
+  try {
+    var isStandalone = window.matchMedia && window.matchMedia("(display-mode: standalone)").matches;
+    var seenKey = "touhan-kakomon-standalone-seen";
+    if (isStandalone && !localStorage.getItem(seenKey)) {
+      localStorage.setItem(seenKey, "1");
+      trackInstallEvent("pwa-first-standalone-launch");
+    }
+  } catch (e) {}
+
   if (!QUESTIONS.length) {
     render([h("h1", null, "登録販売者 過去問トレーニング"), h("p", { "class": "sub" }, "問題データがありません。data.js を確認してください。")]);
   } else {
