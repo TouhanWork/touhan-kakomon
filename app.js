@@ -9,7 +9,7 @@
     5: "医薬品の適正使用・安全対策"
   };
   var STORE_KEY = "touhan-kakomon-v1";
-  var CTA_URL = "https://touhanwork.com/";
+  var CTA_URL = "https://touhanwork.com/lp/mikeiken/?utm_source=kakomon&utm_medium=app";
   var SOURCE_URL = "https://www.kouiki-kansai.jp/koikirengo/jisijimu/shikakumenkyo/touroku/7607.html";
 
   var QUESTIONS = (window.QUESTIONS || []).slice();
@@ -73,8 +73,8 @@
   function ctaCard() {
     return h("div", { "class": "card cta" }, [
       h("strong", null, "合格後のお仕事探しは、登販ワークへ"),
-      h("p", { "class": "sub" }, "登録販売者・調剤事務の求人紹介や転職のご相談を受け付けています。"),
-      h("a", { "class": "btn center", href: CTA_URL, target: "_blank", rel: "noopener" }, "登販ワークを見る")
+      h("p", { "class": "sub" }, "合格したばかりで実務経験がない方（研修中）の働き方や、求人紹介のご相談を無料で受け付けています。"),
+      h("a", { "class": "btn center", href: CTA_URL, target: "_blank", rel: "noopener" }, "合格後の働き方を見る")
     ]);
   }
 
