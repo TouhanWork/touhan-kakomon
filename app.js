@@ -65,7 +65,7 @@
 
   function footer() {
     return h("div", { "class": "footer" }, [
-      h("p", null, "問題の出典：関西広域連合の登録販売者試験問題（令和4〜8年度）、北海道の登録販売者試験問題（北海道・東北ブロック、令和8年度。CC BY 4.0）を加工して作成。"),
+      h("p", null, "問題の出典：関西広域連合の登録販売者試験問題（令和4〜8年度）、北海道の登録販売者試験問題（北海道・東北ブロック、令和3〜8年度。CC BY 4.0）を加工して作成。"),
       h("a", { href: SOURCE_URL, target: "_blank", rel: "noopener" }, "出典：関西広域連合ホームページ"),
       h("br"),
       h("a", { href: SOURCE_URL_HT, target: "_blank", rel: "noopener" }, "出典：北海道ホームページ「登録販売者試験問題について」"),
@@ -84,7 +84,7 @@
   function home() {
     var nodes = [
       h("h1", null, "登録販売者 過去問トレーニング"),
-      h("p", { "class": "sub" }, "関西広域連合（令和4〜8年度）と北海道・東北ブロック（令和8年度）の過去問から、章ごとに解いて解説で確認できます。登録は不要です。")
+      h("p", { "class": "sub" }, "関西広域連合（令和4〜8年度）と北海道・東北ブロック（令和3〜8年度）の過去問から、章ごとに解いて解説で確認できます。登録は不要です。")
     ];
     var all = { done: 0, total: QUESTIONS.length, right: 0 };
     Object.keys(CHAPTERS).forEach(function (k) {
