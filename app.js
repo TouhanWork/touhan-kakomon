@@ -11,6 +11,7 @@
   var STORE_KEY = "touhan-kakomon-v1";
   var CTA_URL = "https://touhanwork.com/lp/mikeiken/?utm_source=kakomon&utm_medium=app";
   var SOURCE_URL = "https://www.kouiki-kansai.jp/koikirengo/jisijimu/shikakumenkyo/touroku/7607.html";
+  var SOURCE_URL_HT = "https://www.pref.hokkaido.lg.jp/hf/iyk/iry/yakuji/tourokuhannbaishashikenmondai.html";
 
   var QUESTIONS = (window.QUESTIONS || []).slice();
   var app = document.getElementById("app");
@@ -64,9 +65,11 @@
 
   function footer() {
     return h("div", { "class": "footer" }, [
-      h("p", null, "問題の出典：関西広域連合の登録販売者試験問題（令和4〜8年度）を加工して作成。"),
+      h("p", null, "問題の出典：関西広域連合の登録販売者試験問題（令和4〜8年度）、北海道の登録販売者試験問題（北海道・東北ブロック、令和8年度。CC BY 4.0）を加工して作成。"),
       h("a", { href: SOURCE_URL, target: "_blank", rel: "noopener" }, "出典：関西広域連合ホームページ"),
-      h("p", null, "解説は登販ワークが作成したものです。本アプリは関西広域連合とは関係ありません。法令・制度は改正されることがあります。受験する試験の最新情報は、各都道府県の公式発表や厚生労働省の資料でご確認ください。学習の成果や合格を保証するものではありません。")
+      h("br"),
+      h("a", { href: SOURCE_URL_HT, target: "_blank", rel: "noopener" }, "出典：北海道ホームページ「登録販売者試験問題について」"),
+      h("p", null, "解説は登販ワークが作成したものです。本アプリは関西広域連合・北海道とは関係ありません。法令・制度は改正されることがあります。受験する試験の最新情報は、各都道府県の公式発表や厚生労働省の資料でご確認ください。学習の成果や合格を保証するものではありません。")
     ]);
   }
 
@@ -81,7 +84,7 @@
   function home() {
     var nodes = [
       h("h1", null, "登録販売者 過去問トレーニング"),
-      h("p", { "class": "sub" }, "関西広域連合の過去問（令和4〜8年度）から、章ごとに解いて解説で確認できます。登録は不要です。")
+      h("p", { "class": "sub" }, "関西広域連合（令和4〜8年度）と北海道・東北ブロック（令和8年度）の過去問から、章ごとに解いて解説で確認できます。登録は不要です。")
     ];
     var all = { done: 0, total: QUESTIONS.length, right: 0 };
     Object.keys(CHAPTERS).forEach(function (k) {
@@ -131,7 +134,7 @@
       h("div", { "class": "sub" }, state.title + "　" + (state.i + 1) + " / " + state.list.length),
       h("div", { "class": "bar" }, h("i", { style: "width:" + pct(state.i, state.list.length) + "%" })),
       h("div", { "class": "card" }, [
-        h("div", { "class": "sub" }, "第" + q.chapter + "章　" + q.source.replace("関西広域連合 ", "").replace(" 登録販売者試験", "") + " 問" + q.no),
+        h("div", { "class": "sub" }, "第" + q.chapter + "章　" + q.source.replace("関西広域連合 ", "関西 ").replace("北海道・東北ブロック ", "北海道・東北 ").replace(" 登録販売者試験", "") + " 問" + q.no),
         h("p", { "class": "stem" }, q.stem)
       ].concat((q.statements || []).map(function (s) {
         return h("div", { "class": "stmt" }, s.label + "　" + s.text);
