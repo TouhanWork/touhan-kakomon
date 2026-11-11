@@ -1,4 +1,4 @@
-var CACHE = "touhan-kakomon-v4";
+var CACHE = "touhan-kakomon-v5";
 var FILES = ["./", "index.html", "style.css", "app.js", "data.js", "manifest.webmanifest", "icon.svg"];
 
 self.addEventListener("install", function (e) {
